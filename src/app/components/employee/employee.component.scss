@@ -1,0 +1,30 @@
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    .col {
+        width: 100%;
+
+        .full-width {
+            width: 100%;
+        }
+    }
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .actions-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .row {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,137 @@
+<form [formGroup]="employeeForm" class="form-dialog">
+    <h1 mat-dialog-title >{{dialogTitle}}</h1>
+    <mat-divider></mat-divider>
+    <mat-dialog-content >
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="outline" color="accent" class="full-width" style="width: 98%;">
+                    <mat-label>Adı</mat-label>
+                    <input type="text" matInput formControlName="firstName" placeholder="Adı Giriniz." />
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="outline" color="accent" class="full-width" style="width: 98%;">
+                    <mat-label>Soyadı</mat-label>
+                    <input type="text" matInput formControlName="lastName" placeholder="Soyadı Giriniz." />
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="outline" color="accent" class="full-width" style="width: 98%;">
+                    <mat-label>E-Posta</mat-label>
+                    <input type="email" matInput formControlName="email" placeholder="E-Posta Adresi Giriniz." />
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="outline" color="accent" class="full-width" style="width: 98%;">
+                    <mat-label>Telefon</mat-label>
+                    <input type="tel" matInput formControlName="phone" placeholder="Telefon Numarası Giriniz." />
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row" style=" margin-bottom: 20px;">
+            <div class="col">
+                <section>
+                    <label>Cinsiyet:</label>
+                    <mat-radio-group formControlName="gender">
+                        <mat-radio-button style="margin: 0 10px;" value="Erkek">Erkek</mat-radio-button>
+                        <mat-radio-button style="margin: 0 10px;" value="Kadın">Kadın</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+            </div>
+            <div class="col">
+                <section>
+                    <label>Zimmet:</label>
+                    <mat-checkbox formControlName="asset" style="margin: 0 10px;">
+                        <span>{{ employeeForm.get('asset')?.value ? 'Var' : 'Yok' }}</span>
+                    </mat-checkbox>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="outline" color="accent" class="full-width">
+                    <mat-label>Departman</mat-label>
+                    <mat-select formControlName="departmentId" (ngModelChange)="onDepartmentChange($event)"
+                        name="department" placeholder="Departman Seçiniz.">
+                        @for (department of departmentList; track department) {
+                        <mat-option [value]="department.id">{{department.name}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="outline" color="accent" class="full-width">
+                    <mat-label>Pozisyon</mat-label>
+                    <mat-select formControlName="positionId" placeholder="Pozisyon Seçiniz.">
+                        @for (position of positionList; track position) {
+                        <mat-option [value]="position.id">{{position.title}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="outline" color="accent" class="full-width">
+                    <mat-label>Okul</mat-label>
+                    <mat-select formControlName="graduatedSchool" placeholder="Mezun Olunan Üniversite Seçiniz.">
+                        @for (university of universityList; track university) {
+                        <mat-option [value]="university.name">{{university.name}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="col">
+                    <mat-form-field appearance="outline" color="accent" class="full-width">
+                        <mat-label>Bölüm</mat-label>
+                        <input type="text" matInput formControlName="graduatedField"
+                            placeholder="Mezun Olunan Bölüm Giriniz." />
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="outline" style="width: 98%;">
+                    <mat-label>Doğum Tarihi</mat-label>
+                    <input matInput [matDatepicker]="picker1" formControlName="birthDate"
+                        placeholder="Doğum Tarihi Seçiniz.">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="outline" style="width: 98%;">
+                    <mat-label>İşe Giriş Tarihi</mat-label>
+                    <input matInput [matDatepicker]="picker2" formControlName="dateOfEntry"
+                        placeholder="İşe Giriş Tarihi Seçiniz.">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Addres</mat-label>
+                    <textarea matInput formControlName="address" placeholder="Adres Giriniz."></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-divider></mat-divider>
+    <mat-dialog-actions class="dialog-actions">
+        <button class="actions-button" mat-raised-button color="primary" (click)="statusControl()">
+            {{actionBtnName}}
+        </button>
+    </mat-dialog-actions>
+
+
+</form>

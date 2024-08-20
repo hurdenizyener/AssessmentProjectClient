@@ -1,0 +1,21 @@
+export interface GetListEmployeeListResponse {
+    id:string;
+    departmentId:string;
+    departmentName:string;
+    positionId:string;
+    positionTitle:string;
+    firstName:string;
+    lastName:string;
+    gender:string;
+    phone:string;
+    email:string;
+    graduatedSchool:string;
+    graduatedField:string;
+    birthDate:Date;
+    dateOfEntry:Date;
+    asset:boolean;
+    address:string;
+    createdDate:Date;
+    lastModifiedDate:Date
+    status:boolean
+  }
